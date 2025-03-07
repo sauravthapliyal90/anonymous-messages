@@ -21,7 +21,7 @@ export const authOptions: NextAuthOptions= {
                             {email: credentials.identifier},
                             {user: credentials.identifier}
                         ]
-                    })
+                    });
 
                     if(!user){
                         throw new Error("no user found with this email")
@@ -57,7 +57,7 @@ export const authOptions: NextAuthOptions= {
           },
           async jwt({ token, user }) {
             if (user) {
-                token._id = user._id?.toString() ,
+                token._id = user._id?.toString() ;
                 token.isVerified = user.isVerified;
                 token.isAcceptingMessage = user.isAcceptingMessage;
                 token.username = user.username;
