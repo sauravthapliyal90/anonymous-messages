@@ -7,6 +7,8 @@ type ConnectionObject= {
 const connection: ConnectionObject = {}
 //void mean i dont care which type of data is returning 
 async function dbConnection(): Promise<void>{
+    console.log("conIs",connection.isConnected);
+    
     if(connection.isConnected){
         console.log("Already connected to database");
         return 
@@ -14,7 +16,6 @@ async function dbConnection(): Promise<void>{
 
     try {
         const db = await mongoose.connect(process.env.MONGODB_URL || '')
-        console.log("db",db);
         
         connection.isConnected = db.connections[0].readyState
         console.log("db.connection",db.Connection);
